@@ -1,3 +1,5 @@
+// Darien Church (dac4457) and Jared Vochoska (jiv329)
+//
 // FILE:  player.cpp
 
 #include <iostream>
@@ -11,6 +13,8 @@
 
 using namespace std;
 
+
+// Default constructor for Player
 Player::Player() {
     myName = "";
     unsigned int currentTime = (unsigned)time(0);
@@ -24,6 +28,7 @@ void Player::addCard(Card c) {
 }
 
 
+// books specified cards
 void Player::bookCards(Card c1, Card c2) {
     myBook.push_back(c1);
     myBook.push_back(c2);
@@ -61,6 +66,7 @@ bool Player::rankInHand(Card c) const {
 
 //uses some strategy to choose one card from the player's
 //hand so they can say "Do you have a 4?"
+// Chooses random card from Player's hand and returns it
 Card Player::chooseCardFromHand() const {
     int index = rand() % myHand.size();
     return myHand[index];
@@ -68,6 +74,7 @@ Card Player::chooseCardFromHand() const {
 
 
 //Does the player have the card c in her hand?
+// returns boolean true if card is in hand, else false
 bool Player::cardInHand(Card c) const {
     for (int i = 0; i < myHand.size(); i++) {
         if (myHand[i] == c)
@@ -89,29 +96,33 @@ Card Player::removeCardFromHand(Card c) {
 }
 
 
+// returns Player's hand as a string
 string Player::showHand() const {
     string myString = "";
     for (int i = 0; i < myHand.size(); i++) {
-        myString = myString + myHand[i].toString();
+        myString = myString + " " + myHand[i].toString();
     }
     return myString;
 }
 
 
+// returns Player's book as a string
 string Player::showBooks() const {
     string myString = "";
     for (int i = 0; i != myBook.size(); i++) {
-        myString = myString + myBook[i].toString();
+        myString = myString + " " + myBook[i].toString();
     }
     return myString;
 }
 
 
+// returns Player's hand size
 int Player::getHandSize() const {
     return myHand.size();
 }
 
 
+// returns Player's book size
 int Player::getBookSize() const {
     return myBook.size();
 }

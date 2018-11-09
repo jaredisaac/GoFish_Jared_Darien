@@ -1,5 +1,7 @@
-// FILE: card_demo.cpp
-// This is a small demonstration program showing how the Card and Deck classes are used.
+// Darien Church (dac4457) and Jared Vochoska (jiv329)
+//
+// FILE: go_fish.cpp
+// Main program for gofish game
 #include <iostream>    // Provides cout and cin
 #include <cstdlib>     // Provides EXIT_SUCCESS
 #include <fstream>
@@ -9,13 +11,16 @@
 
 using namespace std;
 
+
+// deals each passed player a hand of size numCards
 void dealHand(Deck &d, Player &p, int numCards){
     for (int i=0; i < numCards; i++)
         p.addCard(d.dealCard());
 }
 
+
 int main() {
-   ofstream outFile("gofish_results.txt");
+   ofstream outFile("gofish_results.txt");  //output results of game to text file
    if(outFile.is_open()){
 
        Player j("Jared");
@@ -47,7 +52,7 @@ int main() {
                    }
                }
            } else {
-               //check for pairs
+               //check for pairs in each Player's hand and book if pairs present
                Card book1;
                Card book2;
 
@@ -74,6 +79,7 @@ int main() {
                    currentPlayer->addCard(newCard);
                    outFile<<currentPlayer->getName()<<" draws "<<newCard.toString()<<endl;
 
+                   // change turn
                    if(currentPlayer->getName() == "Jared"){
                        currentPlayer = &d;
                        otherPlayer = &j;
@@ -90,7 +96,7 @@ int main() {
                        Card currentCard = currentPlayer->chooseCardFromHand();
                        outFile<<currentPlayer->getName()<<" asks - Do you have a "<<currentCard.rankString(currentCard.getRank())<<"?"<<endl;
 
-                       //checks for card  of same rank
+                       //checks for card of same rank
                        if(otherPlayer->rankInHand(currentCard)){
                            outFile << otherPlayer->getName() << " says - Yes."<<endl;
                            while (otherPlayer->cardInHand(currentCard)){
@@ -103,6 +109,7 @@ int main() {
                            currentPlayer->addCard(gofishCard);
                            outFile<< currentPlayer->getName()<< " draws "<<gofishCard.toString()<<endl;
 
+                           // change turn
                            if(currentPlayer->getName() == "Jared"){
                                currentPlayer = &d;
                                otherPlayer = &j;

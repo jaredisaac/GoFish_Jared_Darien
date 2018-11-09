@@ -1,3 +1,5 @@
+// Darien Church (dac4457) and Jared Vochoska (jiv329)
+//
 // FILE:  player.h
 // written by Roger Priebe
 // 1/22/08 (revised 9/2/08)
@@ -14,6 +16,7 @@
 #include <cstdlib>
 
 #include "card.h"
+
 using namespace std;
 
 
@@ -26,14 +29,17 @@ public:
         myName = name;
         unsigned int currentTime = (unsigned)time(0);
         srand(currentTime);
-    }
+    }   // Constructor to create a player with specified name. Also seeds random number generator
+
 
     string getName() const {
         return myName;
-    }
+    }   // returns player's name
+
 
     void addCard(Card c);  //adds a card to the hand
-    void bookCards(Card c1, Card c2);
+    void bookCards(Card c1, Card c2);   // books two passed cards
+
 
     //OPTIONAL
     // comment out if you decide to not use it
@@ -67,15 +73,15 @@ public:
     // comment out if you decide to not use it
     //this function will check a players hand for a pair.
     //If a pair is found, it returns true and populates the two variables with the cards tha make the pair.
+    // bool checkHandForPair(Card &c1, Card &c2);
 
-    bool checkHandForPair(Card &c1, Card &c2);
 
     //OPTIONAL
     // comment out if you decide to not use it
     //Does the player have a card with the same rank as c in her hand?
     //e.g. will return true if the player has a 7d and the parameter is 7c
 
-    bool sameRankInHand(Card c) const;
+    // bool sameRankInHand(Card c) const;
 
 
 private:

@@ -1,4 +1,6 @@
-//File Name: card.h
+// Darien Church (dac4457) and Jared Vochoska (jiv329)
+//
+// File Name: card.h
 //
 //Written by Owen Astrachan and Roger Priebe
 // This class represents a playing card, i.e., "ace of spades"
@@ -25,7 +27,9 @@
 
 #include <iostream>
 #include <string>
+
 using namespace std;
+
 
 class Card
 {

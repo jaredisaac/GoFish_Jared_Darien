@@ -1,9 +1,16 @@
+// Darien Church (dac4457) and Jared Vochoska (jiv329)
 //
-// Created by Darien on 11/8/2018.
-//
+// FILE: deck.cpp
 
 #include "deck.h"
 #include <time.h>
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+
 Deck::Deck(){
     myIndex = 0;
     for(int i = 0; i < 13 ; i++){
@@ -11,8 +18,9 @@ Deck::Deck(){
         myCards[i + 13]= *(new Card(i+1,Card::hearts));
         myCards[i + 26]= *(new Card(i+1,Card::diamonds));
         myCards[i + 39]= *(new Card(i+1,Card::clubs));
-    };
-};           // pristine, sorted deck
+    }
+}           // pristine, sorted deck
+
 
 void Deck::shuffle(){
     srand((unsigned)time(NULL));
@@ -23,16 +31,19 @@ void Deck::shuffle(){
             Card temp = myCards[i];
             myCards[i] = myCards[randomNum];
             myCards[randomNum] = temp;
-        };
-    };
-};   // shuffle the cards in the current deck
+        }
+    }
+}   // shuffle the cards in the current deck
+
+
 Card Deck::dealCard() {
     if(myIndex != (SIZE)) {
         myIndex++;
         return (myCards[myIndex - 1]);
-    };
-};   // get a card, after 52 are dealt, fail
+    }
+}   // get a card, after 52 are dealt, fail
+
 
 int  Deck::size() const{
     return (SIZE - myIndex);
-};
+}   // returns remaining size of deck (number of cards remaining)
