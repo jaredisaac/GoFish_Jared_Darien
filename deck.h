@@ -1,3 +1,5 @@
+// Darien Church (dac4457) and Jared Vochoska (jiv329)
+//
 // FILE: deck.h
 // written by Owen Astrachan and Roger Priebe
 // this class respresents a deck of cards
